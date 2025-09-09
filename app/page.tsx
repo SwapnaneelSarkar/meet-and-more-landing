@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Menu, Bot, UtensilsCrossed, CreditCard, Bell, Leaf, ShieldCheck } from "lucide-react"
 import Link from "next/link"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { JsonLd } from "@/components/seo/json-ld"
@@ -14,6 +14,9 @@ import { HowItWorks as HowItWorksSection } from "@/components/sections/how-it-wo
 import { RealStories } from "@/components/sections/real-stories"
 import { TrustFeatures } from "@/components/sections/trust-features"
 import { GetTheApp } from "@/components/sections/get-the-app"
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { useIsMobile } from "@/hooks/use-mobile"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 function SectionHeader({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
@@ -28,7 +31,7 @@ function SiteBackground() {
   return (
     <div aria-hidden className="fixed inset-0 -z-50">
       <BackgroundSlideshow
-        images={["/images/new.png", "/images/paint.png", "/images/scroll1.png", "/images/scroll2.png"]}
+        images={["/images/1.jpg", "/images/2.jpg", "/images/3.jpg", "/images/4.jpg", "/images/5.jpg"]}
         intervalMs={6000}
         overlayOpacity={0.72}
       />
@@ -37,6 +40,16 @@ function SiteBackground() {
 }
 
 function Navbar() {
+  const isMobile = useIsMobile()
+
+  const navigationItems = [
+    { href: "#how", label: "How it works" },
+    { href: "#features", label: "Features" },
+    { href: "#stories", label: "Stories" },
+    { href: "#download", label: "Download" },
+    { href: "#faq", label: "FAQ" },
+  ]
+
   return (
     <header className="sticky top-0 z-40 border-b border-border/50 bg-background/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
@@ -44,34 +57,92 @@ function Navbar() {
           <Image src="/images/logo.png" alt="Meet & More logo" width={32} height={32} />
           <span className="font-display text-lg font-semibold">Meet & More</span>
         </Link>
+        
+        {/* Desktop Navigation */}
         <nav className="hidden items-center gap-4 md:flex">
-          <a href="#how" className="text-sm text-foreground/80 hover:text-foreground">
-            How it works
-          </a>
-          <a href="#features" className="text-sm text-foreground/80 hover:text-foreground">
-            Features
-          </a>
-          <a href="#stories" className="text-sm text-foreground/80 hover:text-foreground">
-            Stories
-          </a>
-          <a href="#download" className="text-sm text-foreground/80 hover:text-foreground">
-            Download
-          </a>
-          <a href="#faq" className="text-sm text-foreground/80 hover:text-foreground">
-            FAQ
-          </a>
+          {navigationItems.map((item) => (
+            <a key={item.href} href={item.href} className="text-sm text-foreground/80 hover:text-foreground">
+              {item.label}
+            </a>
+          ))}
         </nav>
+
         <div className="flex items-center gap-2">
+          {/* Desktop CTA Buttons */}
           <a href="#download" className="hidden md:block">
             <Button variant="secondary" className="bg-secondary text-secondary-foreground hover:bg-secondary/80">
               Download App
             </Button>
           </a>
-          <a href="#download">
+          <a href="#download" className="hidden md:block">
             <Button className="bg-primary text-primary-foreground ring-2 ring-primary/60 shadow-lg hover:brightness-110">
-              Book Your Seat <ArrowRight className="ml-2 size-4" />
+              Join the table <ArrowRight className="ml-2 size-4" />
             </Button>
           </a>
+
+          {/* Mobile Hamburger Menu */}
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden hover:bg-accent/50">
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Open menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[320px] sm:w-[400px] p-0">
+              <div className="flex flex-col h-full">
+                {/* Header with Logo and Branding */}
+                <div className="px-6 py-6 border-b border-border/50 bg-gradient-to-r from-primary/5 to-secondary/5">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Image src="/images/logo.png" alt="Meet & More logo" width={32} height={32} />
+                    <span className="font-display text-xl font-semibold">Meet & More</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    Your gateway to new adventures through food
+                  </p>
+                </div>
+
+                {/* Navigation Items */}
+                <nav className="flex-1 px-6 py-6">
+                  <div className="space-y-2">
+                    {navigationItems.map((item, index) => (
+                      <a
+                        key={item.href}
+                        href={item.href}
+                        className="group flex items-center gap-3 px-4 py-3 rounded-lg text-base font-medium text-foreground/80 hover:text-foreground hover:bg-accent/50 transition-all duration-200"
+                      >
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-semibold group-hover:bg-primary/20 transition-colors">
+                          {index + 1}
+                        </div>
+                        <span>{item.label}</span>
+                      </a>
+                    ))}
+                  </div>
+                </nav>
+
+                {/* CTA Buttons */}
+                <div className="px-6 py-6 border-t border-border/50 bg-muted/30">
+                  <div className="space-y-3">
+                    <a href="#download" className="block">
+                      <Button variant="secondary" className="w-full h-12 bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all duration-200 font-medium">
+                        Download App
+                      </Button>
+                    </a>
+                    <div className="space-y-2">
+                      <span className="text-sm font-medium text-primary/80 text-center block">Be the 5th stranger</span>
+                      <a href="#download" className="block">
+                        <Button className="w-full h-12 bg-primary text-primary-foreground ring-2 ring-primary/60 shadow-lg hover:brightness-110 transition-all duration-200 font-medium">
+                          Join the table <ArrowRight className="ml-2 size-4" />
+                        </Button>
+                      </a>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground text-center mt-4">
+                    Where strangers become friends, one meal at a time
+                  </p>
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
@@ -156,24 +227,26 @@ function Hero() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="mt-4 text-balance text-base leading-6 text-muted-foreground text-center md:text-left"
             >
-              Meet & More matches you with compatible diners for curated meals at hand‑picked restaurants. Safe,
-              friendly, and unforgettable.
+              Whether you're an expat or tourist in a new city or someone looking to make new friends over culinary experiences - Meet & More is your gateway to new adventures.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.0 }}
-              className="mt-6 flex flex-col gap-3 sm:flex-row"
+              className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-end"
             >
-              <a href="#download">
-                <Button
-                  size="lg"
-                  className="w-full bg-primary text-primary-foreground ring-2 ring-primary/70 shadow-lg hover:brightness-110 sm:w-auto"
-                >
-                  Book Your Seat Now
-                </Button>
-              </a>
-              <a href="#download">
+              <div className="flex flex-col items-center sm:items-start gap-2">
+                <span className="text-sm font-medium text-primary/80">Be the 5th stranger</span>
+                <a href="#download" className="w-full sm:w-auto">
+                  <Button
+                    size="lg"
+                    className="w-full sm:w-auto bg-primary text-primary-foreground ring-2 ring-primary/70 shadow-lg hover:brightness-110"
+                  >
+                    Join the table
+                  </Button>
+                </a>
+              </div>
+              <a href="#download" className="w-full sm:w-auto">
                 <Button
                   size="lg"
                   variant="secondary"
@@ -200,7 +273,7 @@ function Hero() {
           >
             <div className="relative h-56 overflow-hidden rounded-xl border border-border/60 md:h-full">
               <Image
-                src="/images/paint.png"
+                src="/images/1.jpg"
                 alt="Guests sharing a meal together"
                 fill
                 sizes="(min-width: 768px) 40vw, 100vw"
@@ -224,7 +297,7 @@ function SocialProof() {
     { name: "Ethan", quote: "96% true: I genuinely made meaningful connections. Highly recommend." },
     { name: "Sara", quote: "The restaurant picks are spot on. Amazing food and better company." },
   ]
-  const avatars = ["/images/paint.png", "/images/homeAnimation.png", "/images/new.png"]
+  const avatars = ["/images/6.jpg", "/images/7.jpg", "/images/8.jpg"]
 
   return (
     <section id="stories" className="relative border-y border-border/60 py-14 overflow-hidden">
@@ -311,7 +384,7 @@ function Download() {
       <div className="mx-auto max-w-6xl px-4">
         <SectionHeader title="Get the app" subtitle="Use the official store links to download." />
         <div className="grid items-center gap-8 md:grid-cols-2">
-          <div className="space-y-4">
+          <div className="space-y-4 flex flex-col items-center md:items-start">
             <a href="#" aria-label="Download on the App Store">
               <Image
                 src="/images/badges/appstore.jpeg"
@@ -339,7 +412,7 @@ function Download() {
             <div className="mt-4">
               <a href="#download">
                 <Button className="bg-primary text-primary-foreground ring-2 ring-primary/60 shadow-lg hover:brightness-110">
-                  Book Your Seat Now
+                  Join the table
                 </Button>
               </a>
             </div>

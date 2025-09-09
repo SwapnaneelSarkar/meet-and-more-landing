@@ -57,7 +57,7 @@ export default function EnhanceLegal({
   const slides =
     images && images.length
       ? images
-      : ["/images/new.png", "/images/paint.png", "/images/scroll1.png", "/images/scroll2.png"]
+      : ["/images/1.jpg", "/images/2.jpg", "/images/3.jpg", "/images/4.jpg", "/images/5.jpg"]
 
   return (
     <>

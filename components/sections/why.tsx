@@ -40,7 +40,7 @@ export function WhySection() {
         <div className="mx-auto mb-8 max-w-2xl text-center">
           <h2 className="font-display text-pretty text-3xl font-bold tracking-tight md:text-4xl">Why Meet & More?</h2>
           <p className="mt-3 text-balance text-base leading-6 text-muted-foreground">
-            Transform every meal into an opportunity for meaningful connections. We're redefining social dining by making it effortless to meet new people through thoughtfully curated culinary experiences.
+            From solo travelers seeking local connections to busy professionals craving authentic conversations - we create spaces where strangers become friends over shared meals and stories.
           </p>
         </div>
 

@@ -12,11 +12,11 @@ export default function SectionsDemoPage() {
     <main className="relative">
       <BackgroundSlideshow
         images={[
-          "/images/new.png",
-          "/images/paint.png",
-          "/images/scroll1.png",
-          "/images/scroll2.png",
-          "/images/subscriptionBg.jpeg",
+          "/images/1.jpg",
+          "/images/2.jpg",
+          "/images/3.jpg",
+          "/images/4.jpg",
+          "/images/5.jpg",
         ]}
         intervalMs={4500}
         overlayOpacity={0.72}
@@ -36,7 +36,7 @@ export default function SectionsDemoPage() {
               href="#book"
               className="rounded-lg bg-orange-600 px-5 py-3 text-sm font-medium text-white shadow-lg shadow-orange-600/20 ring-2 ring-orange-500 transition hover:bg-orange-500 focus:outline-none focus-visible:ring-4"
             >
-              Book Your Seat Now
+              Join the table
             </Link>
             <Link
               href="#download"

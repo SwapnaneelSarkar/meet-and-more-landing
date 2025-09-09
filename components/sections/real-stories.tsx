@@ -110,7 +110,7 @@ export function RealStories() {
                 >
                   <div className="flex items-center gap-3">
                     <Avatar className="h-12 w-12">
-                      <AvatarImage src="/images/paint.png" alt={`${story.name} headshot`} />
+                      <AvatarImage src={`/images/${(idx % 2) + 9}.jpg`} alt={`${story.name} headshot`} />
                       <AvatarFallback>{story.name.charAt(0)}</AvatarFallback>
                     </Avatar>
                     <div>

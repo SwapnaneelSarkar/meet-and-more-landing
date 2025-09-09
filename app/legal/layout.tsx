@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 }
 
 export default function LegalLayout({ children }: { children: ReactNode }) {
-  const slides = ["/images/new.png", "/images/paint.png", "/images/scroll1.png", "/images/scroll2.png"]
+  const slides = ["/images/1.jpg", "/images/2.jpg", "/images/3.jpg", "/images/4.jpg", "/images/5.jpg"]
   return (
     <div className="relative min-h-screen">
       {/* Background behind everything */}
