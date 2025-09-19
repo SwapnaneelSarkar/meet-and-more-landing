@@ -33,7 +33,7 @@ export function GetTheApp() {
             </p>
             <div className="mt-4 space-y-2">
               <span className="text-sm font-medium text-primary/80">Be the 5th stranger</span>
-              <a href="#download" className="block">
+              <a href="https://.meetandmore.com" className="block">
                 <button className="w-full bg-primary text-primary-foreground ring-2 ring-primary/60 shadow-lg hover:brightness-110 px-4 py-2 rounded-md">
                   Join the table
                 </button>

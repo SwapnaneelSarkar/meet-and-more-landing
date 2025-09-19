@@ -74,7 +74,7 @@ function Navbar() {
               Download the apps
             </Button>
           </a>
-          <a href="#download" className="hidden md:block">
+          <a href="https://app.meetandmore.com" className="hidden md:block">
             <Button className="bg-primary text-primary-foreground ring-2 ring-primary/60 shadow-lg hover:brightness-110">
               Join the table <ArrowRight className="ml-2 size-4" />
             </Button>
@@ -137,7 +137,7 @@ function Navbar() {
                     <div className="space-y-2">
                       <span className="text-sm font-medium text-primary/80 text-center block">Be the 5th stranger</span>
                       <SheetClose asChild>
-                        <a href="#download" className="block">
+                        <a href="https://app.meetandmore.com" className="block">
                           <Button className="w-full h-12 bg-primary text-primary-foreground ring-2 ring-primary/60 shadow-lg hover:brightness-110 transition-all duration-200 font-medium">
                             Join the table <ArrowRight className="ml-2 size-4" />
                           </Button>
@@ -238,7 +238,7 @@ function Hero() {
             >
               <div className="flex flex-col items-center sm:items-start gap-2">
                 <span className="text-sm font-medium text-primary/80">Be the 5th stranger</span>
-                <a href="#download" className="w-full sm:w-auto">
+                <a href="https://app.meetandmore.com" className="w-full sm:w-auto">
                   <Button
                     size="lg"
                     className="w-full sm:w-auto bg-primary text-primary-foreground ring-2 ring-primary/70 shadow-lg hover:brightness-110"
@@ -420,7 +420,7 @@ function Download() {
               Prefer desktop? Start the booking flow online and continue on mobile.
             </p>
             <div className="mt-4">
-              <a href="#download">
+              <a href="https://app.meetandmore.com">
                 <Button className="bg-primary text-primary-foreground ring-2 ring-primary/60 shadow-lg hover:brightness-110">
                   Join the table
                 </Button>
