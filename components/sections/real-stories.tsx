@@ -24,10 +24,29 @@ const stories: Story[] = [
     quote: "Hosted a brunch for four foodies—loved the respectful vibe and how everyone shared their favorite local spots. Great networking!",
   },
   {
+    name: "Dmitri Ivanov",
+    role: "Data Scientist",
+    city: "Moscow",
+    quote: "Felt instantly welcome. Great mix of people and a relaxed atmosphere.",
+  },
+  {
     name: "Rahul Mehta",
     role: "Consultant",
     city: "Delhi",
     quote: "Booked last-minute and still had an amazing dinner with three professionals. We're now regular dining buddies every weekend.",
+  },
+
+  {
+    name: "Oliver Smith",
+    role: "Teacher",
+    city: "London",
+    quote: "A lovely way to meet folks you wouldn't normally cross paths with.",
+  },
+  {
+    name: "Charlotte Brown",
+    role: "Nurse",
+    city: "Manchester",
+    quote: "Warm, respectful and fun. Left with new friends and restaurant tips.",
   },
   {
     name: "Ananya Reddy",
@@ -41,11 +60,28 @@ const stories: Story[] = [
     city: "Pune",
     quote: "Met my co-founder over a casual lunch. The app's matching algorithm is spot-on for finding like-minded people.",
   },
+    {
+    name: "Camila Rodríguez",
+    role: "Marketing Specialist",
+    city: "Buenos Aires",
+    quote: "Una experiencia auténtica: buena comida y conversaciones que valen la pena.",
+  },  {
+    name: "Camila Rodríguez",
+    role: "Marketing Specialist",
+    city: "Buenos Aires",
+    quote: "Una experiencia auténtica: buena comida y conversaciones que valen la pena.",
+  },
   {
     name: "Zara Khan",
     role: "Fashion Designer",
     city: "Chennai",
     quote: "Love exploring new restaurants with food enthusiasts. Made five new friends who share my passion for authentic local cuisine.",
+  },
+  {
+    name: "Natalia Sokolova",
+    role: "Product Manager",
+    city: "Saint Petersburg",
+    quote: "Уютные встречи и интересные разговоры — обязательно приду снова!",
   },
   {
     name: "Aditya Patel",
@@ -58,6 +94,20 @@ const stories: Story[] = [
     role: "Content Creator",
     city: "Kolkata",
     quote: "Hosted a food photography meetup. Everyone was so creative and passionate about documenting culinary experiences.",
+  },
+  // International additions
+
+  {
+    name: "Mateo Álvarez",
+    role: "Student",
+    city: "Ciudad de México",
+    quote: "Conocí gente increíble y descubrí lugares nuevos. Súper recomendado.",
+  },
+  {
+    name: "Valentina Silva",
+    role: "Architect",
+    city: "São Paulo",
+    quote: "Gente amable, ambiente seguro y un plan perfecto para el sábado.",
   },
 ]
 

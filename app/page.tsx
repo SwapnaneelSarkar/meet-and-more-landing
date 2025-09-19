@@ -14,7 +14,7 @@ import { HowItWorks as HowItWorksSection } from "@/components/sections/how-it-wo
 import { RealStories } from "@/components/sections/real-stories"
 import { TrustFeatures } from "@/components/sections/trust-features"
 import { GetTheApp } from "@/components/sections/get-the-app"
-import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetClose } from "@/components/ui/sheet"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
@@ -44,9 +44,9 @@ function Navbar() {
 
   const navigationItems = [
     { href: "#how", label: "How it works" },
-    { href: "#features", label: "Features" },
-    { href: "#stories", label: "Stories" },
-    { href: "#download", label: "Download" },
+    { href: "#features", label: "What you get" },
+    { href: "#stories", label: "User experiences so far" },
+    { href: "#download", label: "Download the apps" },
     { href: "#faq", label: "FAQ" },
   ]
 
@@ -71,7 +71,7 @@ function Navbar() {
           {/* Desktop CTA Buttons */}
           <a href="#download" className="hidden md:block">
             <Button variant="secondary" className="bg-secondary text-secondary-foreground hover:bg-secondary/80">
-              Download App
+              Download the apps
             </Button>
           </a>
           <a href="#download" className="hidden md:block">
@@ -89,6 +89,10 @@ function Navbar() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[320px] sm:w-[400px] p-0">
+              {/* Visually hidden title for accessibility (required by Radix Dialog) */}
+              <SheetHeader className="sr-only">
+                <SheetTitle>Mobile menu</SheetTitle>
+              </SheetHeader>
               <div className="flex flex-col h-full">
                 {/* Header with Logo and Branding */}
                 <div className="px-6 py-6 border-b border-border/50 bg-gradient-to-r from-primary/5 to-secondary/5">
@@ -105,16 +109,17 @@ function Navbar() {
                 <nav className="flex-1 px-6 py-6">
                   <div className="space-y-2">
                     {navigationItems.map((item, index) => (
-                      <a
-                        key={item.href}
-                        href={item.href}
-                        className="group flex items-center gap-3 px-4 py-3 rounded-lg text-base font-medium text-foreground/80 hover:text-foreground hover:bg-accent/50 transition-all duration-200"
-                      >
-                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-semibold group-hover:bg-primary/20 transition-colors">
-                          {index + 1}
-                        </div>
-                        <span>{item.label}</span>
-                      </a>
+                      <SheetClose asChild key={item.href}>
+                        <a
+                          href={item.href}
+                          className="group flex items-center gap-3 px-4 py-3 rounded-lg text-base font-medium text-foreground/80 hover:text-foreground hover:bg-accent/50 transition-all duration-200"
+                        >
+                          <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-semibold group-hover:bg-primary/20 transition-colors">
+                            {index + 1}
+                          </div>
+                          <span>{item.label}</span>
+                        </a>
+                      </SheetClose>
                     ))}
                   </div>
                 </nav>
@@ -122,18 +127,22 @@ function Navbar() {
                 {/* CTA Buttons */}
                 <div className="px-6 py-6 border-t border-border/50 bg-muted/30">
                   <div className="space-y-3">
-                    <a href="#download" className="block">
-                      <Button variant="secondary" className="w-full h-12 bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all duration-200 font-medium">
-                        Download App
-                      </Button>
-                    </a>
-                    <div className="space-y-2">
-                      <span className="text-sm font-medium text-primary/80 text-center block">Be the 5th stranger</span>
+                    <SheetClose asChild>
                       <a href="#download" className="block">
-                        <Button className="w-full h-12 bg-primary text-primary-foreground ring-2 ring-primary/60 shadow-lg hover:brightness-110 transition-all duration-200 font-medium">
-                          Join the table <ArrowRight className="ml-2 size-4" />
+                        <Button variant="secondary" className="w-full h-12 bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all duration-200 font-medium">
+                          Download the apps
                         </Button>
                       </a>
+                    </SheetClose>
+                    <div className="space-y-2">
+                      <span className="text-sm font-medium text-primary/80 text-center block">Be the 5th stranger</span>
+                      <SheetClose asChild>
+                        <a href="#download" className="block">
+                          <Button className="w-full h-12 bg-primary text-primary-foreground ring-2 ring-primary/60 shadow-lg hover:brightness-110 transition-all duration-200 font-medium">
+                            Join the table <ArrowRight className="ml-2 size-4" />
+                          </Button>
+                        </a>
+                      </SheetClose>
                     </div>
                   </div>
                   <p className="text-xs text-muted-foreground text-center mt-4">
@@ -150,7 +159,7 @@ function Navbar() {
 }
 
 function Hero() {
-  const headingText = "Connect over dinner, create lasting friendships."
+  const headingText = "Meet 5 strangers over dinner, every Saturday across major cities of the world"
   
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -190,29 +199,21 @@ function Hero() {
           className="grid items-stretch gap-10 md:grid-cols-2"
         >
           <div className="self-center text-center md:text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/60 px-3 py-1 text-xs text-foreground/70"
-            >
-              <Image src="/images/logo.png" alt="Meet & More icon" width={18} height={18} />
-              Social Dining, Reimagined
-            </motion.div>
+            
             <motion.h1
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="font-display text-pretty text-4xl font-bold leading-tight md:text-5xl text-center md:text-left"
+              className="font-display text-pretty text-3xl font-bold leading-tight md:text-5xl text-center md:text-left"
             >
               {headingText.split(' ').map((word, wordIndex) => (
                 <motion.span
                   key={wordIndex}
                   variants={characterVariants}
-                  className="inline-block mr-2"
+                  className="inline-block mr-1.5"
                   style={{ 
                     transformOrigin: 'center bottom',
-                    lineHeight: '1.2',
+                    lineHeight: '1.15',
                     display: 'inline-block',
                     verticalAlign: 'baseline'
                   }}
@@ -296,13 +297,22 @@ function SocialProof() {
     { name: "Maya", quote: "I met two close friends at my first dinner. The vibe was safe and welcoming." },
     { name: "Ethan", quote: "96% true: I genuinely made meaningful connections. Highly recommend." },
     { name: "Sara", quote: "The restaurant picks are spot on. Amazing food and better company." },
+    { name: "Dmitri", quote: "Felt like home away from home. Great conversations over excellent food." },
+    { name: "Oliver", quote: "Lovely people, relaxed vibe, and a surprisingly effortless way to meet new friends." },
+    { name: "Camila", quote: "Una noche inolvidable. Conversaciones auténticas y gente maravillosa." },
+    { name: "Viktor", quote: "Отличная компания и тёплая атмосфера. Обязательно приду ещё!" },
+    { name: "Natalia", quote: "Comforting, open, and genuinely fun. I felt welcome from the first minute." },
+    { name: "Charlotte", quote: "Such an easy way to meet interesting people in the city." },
+    { name: "James", quote: "Great chats, solid recommendations, and a relaxed evening all around." },
+    { name: "Valentina", quote: "Gente linda y conversaciones sinceras. ¡Volveré seguro!" },
+    { name: "Mateo", quote: "Conocí amigos nuevos y probé platos espectaculares. 10/10." },
   ]
   const avatars = ["/images/6.jpg", "/images/7.jpg", "/images/8.jpg"]
 
   return (
     <section id="stories" className="relative border-y border-border/60 py-14 overflow-hidden">
       <div className="mx-auto max-w-6xl px-4">
-        <SectionHeader title="Real stories from real diners" subtitle="Trusted by a growing community worldwide." />
+        <SectionHeader title="User experiences so far" subtitle="Trusted by a growing community worldwide." />
         <div className="grid gap-4 md:grid-cols-3">
           {testimonials.map((t, idx) => (
             <div key={t.name} className="rounded-xl border border-border/60 bg-card p-5">
@@ -360,7 +370,7 @@ function Features() {
   return (
     <section id="features" className="py-14">
       <div className="mx-auto max-w-6xl px-4">
-        <SectionHeader title="Features that build trust" />
+        <SectionHeader title="What you get" />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((f) => (
             <div key={f.title} className="rounded-xl border border-border/60 bg-card p-5">
@@ -506,7 +516,7 @@ function SiteFooter() {
               <span className="font-display text-base font-semibold">Meet & More</span>
             </div>
             <p className="mt-3 text-sm text-muted-foreground max-w-sm">
-              Connect over dinner and create friendships that last.
+              Connect over dinner and create friendships that last
             </p>
             <p id="contact" className="mt-3 text-sm">
               Contact:{" "}

@@ -69,6 +69,10 @@ function SheetContent({
             "data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom inset-x-0 bottom-0 h-auto border-t",
           className
         )}
+        // Prevent Radix from auto focusing elements on open/close which can
+        // throw errors if the trigger unmounts or is not focusable on mobile.
+        onOpenAutoFocus={(event) => event.preventDefault()}
+        onCloseAutoFocus={(event) => event.preventDefault()}
         {...props}
       >
         {children}
