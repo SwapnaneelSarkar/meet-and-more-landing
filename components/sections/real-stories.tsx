@@ -12,7 +12,7 @@ type Story = {
 
 const stories: Story[] = [
   {
-    name: "Aarav Sharma",
+    name: "Aarav Gupta",
     role: "Tech Entrepreneur",
     city: "Bengaluru",
     quote: "Found a table near Indiranagar—ended up meeting two startup founders and a chef. We're now planning a food tech venture together!",
