@@ -43,7 +43,7 @@ function Navbar() {
   const isMobile = useIsMobile()
 
   const navigationItems = [
-    { href: "#how", label: "How it works" },
+    { href: "#how-it-works", label: "How it works" },
     { href: "#features", label: "What you get" },
     { href: "#stories", label: "User experiences so far" },
     { href: "#download", label: "Download the apps" },
